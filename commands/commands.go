@@ -1,10 +1,6 @@
-package main
+package commands
 
-import (
-	"fmt"
-)
-
-var cliName string = "Pokedex"
+import "fmt"
 
 type cliCommand struct {
 	name        string
@@ -12,34 +8,27 @@ type cliCommand struct {
 	callback    func() error
 }
 
-func commandHelp() error {
+func CommandHelp() error {
 	fmt.Println("Help")
 	return nil
 }
 
-func commandExit() error {
+func CommandExit() error {
 	fmt.Println("Help")
 	return nil
 }
 
-func printPrompt() {
-	fmt.Println(cliName, "> ")
-}
-
-func getCommands() map[string]cliCommand {
+func GetCommands() map[string]cliCommand {
 	return map[string]cliCommand{
 		"help": {
 			name:        "help",
 			description: "Displays a help message",
-			callback:    commandHelp,
+			callback:    CommandHelp,
 		},
 		"exit": {
 			name:        "exit",
 			description: "Exit the Pokedex",
-			callback:    commandExit,
+			callback:    CommandExit,
 		},
 	}
-}
-
-func main() {
 }
