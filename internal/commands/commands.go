@@ -3,6 +3,7 @@ package commands
 import (
 	"github.com/Woutjeee/go_pokedex/internal/commands/exit"
 	"github.com/Woutjeee/go_pokedex/internal/commands/help"
+	"github.com/Woutjeee/go_pokedex/internal/commands/mapf"
 	"github.com/Woutjeee/go_pokedex/internal/commands/types"
 )
 
@@ -17,6 +18,11 @@ func GetCommands() map[string]types.CliCommand {
 			Name:        "exit",
 			Description: "Exit the Pokedex",
 			Callback:    exit.CommandExit,
+		},
+		"map": {
+			Name:        "map",
+			Description: "Show all next areas",
+			Callback:    mapf.GetMap,
 		},
 	}
 }

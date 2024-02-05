@@ -5,3 +5,8 @@ type CliCommand struct {
 	Description string
 	Callback    func() error
 }
+
+type Location struct {
+	Name string `json:"name"`
+	//Url  string `json:"url"`
+}
