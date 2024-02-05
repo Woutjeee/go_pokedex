@@ -1,39 +1,22 @@
 package commands
 
-import "fmt"
+import (
+	"github.com/Woutjeee/go_pokedex/internal/commands/exit"
+	"github.com/Woutjeee/go_pokedex/internal/commands/help"
+	"github.com/Woutjeee/go_pokedex/internal/commands/types"
+)
 
-type cliCommand struct {
-	Name        string
-	Description string
-	Callback    func() error
-}
-
-func CommandHelp() error {
-	fmt.Println(`
-Welcome to the Pokedex!
-Usage:
-
-help: Displays a help message
-exit: Exit the Pokedex
-	`)
-	return nil
-}
-
-func CommandExit() error {
-	return nil
-}
-
-func GetCommands() map[string]cliCommand {
-	return map[string]cliCommand{
+func GetCommands() map[string]types.CliCommand {
+	return map[string]types.CliCommand{
 		"help": {
 			Name:        "help",
 			Description: "Displays a help message",
-			Callback:    CommandHelp,
+			Callback:    help.CommandHelp,
 		},
 		"exit": {
 			Name:        "exit",
 			Description: "Exit the Pokedex",
-			Callback:    CommandExit,
+			Callback:    exit.CommandExit,
 		},
 	}
 }

@@ -29,6 +29,7 @@ func main() {
 	for reader.Scan() {
 		text := cleanInput(reader.Text())
 		if command, exists := commands[text]; exists {
+			// Execute the command, will not execute if results in error.
 			err := command.Callback()
 
 			if err != nil {
@@ -41,7 +42,7 @@ func main() {
 			}
 
 		} else {
-			fmt.Println("Does not exist")
+			fmt.Println("Command with the name", text, "does not exist.")
 		}
 		printPrompt()
 	}
