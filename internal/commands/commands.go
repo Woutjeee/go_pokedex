@@ -3,32 +3,37 @@ package commands
 import "fmt"
 
 type cliCommand struct {
-	name        string
-	description string
-	callback    func() error
+	Name        string
+	Description string
+	Callback    func() error
 }
 
 func CommandHelp() error {
-	fmt.Println("Help commands")
+	fmt.Println(`
+Welcome to the Pokedex!
+Usage:
+
+help: Displays a help message
+exit: Exit the Pokedex
+	`)
 	return nil
 }
 
 func CommandExit() error {
-	fmt.Println("Help commands")
 	return nil
 }
 
 func GetCommands() map[string]cliCommand {
 	return map[string]cliCommand{
 		"help": {
-			name:        "help",
-			description: "Displays a help message",
-			callback:    CommandHelp,
+			Name:        "help",
+			Description: "Displays a help message",
+			Callback:    CommandHelp,
 		},
 		"exit": {
-			name:        "exit",
-			description: "Exit the Pokedex",
-			callback:    CommandExit,
+			Name:        "exit",
+			Description: "Exit the Pokedex",
+			Callback:    CommandExit,
 		},
 	}
 }
