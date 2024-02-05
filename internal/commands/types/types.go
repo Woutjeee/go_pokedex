@@ -7,6 +7,10 @@ type CliCommand struct {
 }
 
 type Location struct {
+	Name  string `json:"name"`
+	Areas []Area `json:"areas"`
+}
+
+type Area struct {
 	Name string `json:"name"`
-	//Url  string `json:"url"`
 }
