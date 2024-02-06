@@ -10,11 +10,15 @@ import (
 
 type LocationAreasResponse struct {
 	Results []types.Area `json:"results"`
+	Next    string       `json:"next"`
 }
+
+var firstApiPath string = "https://pokeapi.co/api/v2/location-area"
 
 func GetMap() error {
 	var locationAreasResponse LocationAreasResponse
-	err := client.Get("location-area", &locationAreasResponse, len(locationAreasResponse.Results))
+
+	err := client.Get(firstApiPath, &locationAreasResponse)
 	if err != nil {
 		log.Fatal(err)
 		return err
@@ -24,7 +28,6 @@ func GetMap() error {
 		fmt.Println(location.Name)
 	}
 
-	fmt.Println("Length of results is", len(locationAreasResponse.Results))
-
+	firstApiPath = locationAreasResponse.Next
 	return nil
 }

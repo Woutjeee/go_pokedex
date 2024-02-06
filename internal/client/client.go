@@ -5,20 +5,13 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"strconv"
 )
 
-var baseURL string = "https://pokeapi.co/api/v2/"
-
-func Get[T any](path string, t *T, skip ...int) error {
+func Get[T any](path string, t *T) error {
 	var resp *http.Response
 	var err error
 
-	if len(skip) > 0 && skip[0] != 0 {
-		resp, err = http.Get(baseURL + path + "/" + strconv.Itoa(skip[0]))
-	} else {
-		resp, err = http.Get(baseURL + path)
-	}
+	resp, err = http.Get(path)
 
 	if err != nil {
 		log.Fatalln(err)
@@ -35,11 +28,11 @@ func Get[T any](path string, t *T, skip ...int) error {
 	}
 
 	// Print the JSON response to the console
-	jsonResponse, err := json.MarshalIndent(t, "", "    ")
-	if err != nil {
-		return err
-	}
-	log.Printf("JSON Response:\n%s\n", jsonResponse)
+	// jsonResponse, err := json.MarshalIndent(t, "", "    ")
+	// if err != nil {
+	// 	return err
+	// }
+	// log.Printf("JSON Response:\n%s\n", jsonResponse)
 
 	return nil
 }
